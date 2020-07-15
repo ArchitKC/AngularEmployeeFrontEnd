@@ -1,4 +1,22 @@
- <div style="text-align: center; text-decoration: line-through; margin-top: 10px;">
+ <div style="text-align: center;  margin-top: 10px;">
   <h1>{{ title }} app is still not running!</h1>
+  <div class="btn-group" role="group" aria-label="Basic example" style="text-decoration: none;">
+    <button type="button" class="btn btn-secondary">Left</button>
+    <button type="button" class="btn btn-secondary">Middle</button>
+    <button type="button" class="btn btn-secondary">Right</button>
+  </div>
+  <div><mat-slider min="1" max="100" step="1" value="1"></mat-slider></div>  
  </div>
+
+ <form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Favorite food</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+  </mat-form-field>
+</form> 
     
