@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild} from '@angular/core'; 
 import {MatTableDataSource} from '@angular/material/table';   
 import {MatSort} from '@angular/material/sort';
+import {MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import { DepartmentComponent } from '../department.component';
 import {DepartmentService} from '../../services/department.service';
-
- 
+import {AddDeptComponent} from '../add-dept/add-dept.component';  
 
 @Component({
   selector: 'app-show-dept',
@@ -13,7 +13,9 @@ import {DepartmentService} from '../../services/department.service';
 })
 export class ShowDeptComponent  implements OnInit {
 
-  constructor(private service:DepartmentService){}
+  constructor(
+    private service:DepartmentService,
+    private dialog:MatDialog){}
 
    
   listData : MatTableDataSource<any>;
@@ -44,6 +46,14 @@ export class ShowDeptComponent  implements OnInit {
     this.listData.filter = filterValue.trim().toLowerCase();
   }
 
+  onLoadView(){
+    const dialogAdd = new MatDialogConfig();
+    dialogAdd.disableClose= true;
+    dialogAdd.autoFocus= true;
+    dialogAdd.width = "75%";
+    this.dialog.open(AddDeptComponent,dialogAdd);
+    console.log("Button Clicked");
+  }
 
 }
 
