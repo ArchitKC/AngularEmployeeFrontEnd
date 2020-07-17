@@ -3,9 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
+import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import {MatInputModule} from '@angular/material/input';
+import { MatTableModule} from '@angular/material/table'; 
+import {MatIconModule} from '@angular/material/icon';
+import {MatSortModule} from '@angular/material/sort';
+import {MatButtonModule} from '@angular/material/button';
 import { EmployeeComponent } from './employee/employee.component';
 import { DepartmentComponent } from './department/department.component';
 import { ShowDeptComponent } from './department/show-dept/show-dept.component';
@@ -30,9 +34,13 @@ import { AddEmpComponent } from './employee/add-emp/add-emp.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSliderModule,
-    MatInputModule
+    BrowserAnimationsModule, 
+    MatInputModule, 
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    HttpClientModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,22 +1,44 @@
- <div style="text-align: center;  margin-top: 10px;">
-  <h1>{{ title }} app is still not running!</h1>
-  <div class="btn-group" role="group" aria-label="Basic example" style="text-decoration: none;">
-    <button type="button" class="btn btn-secondary">Left</button>
-    <button type="button" class="btn btn-secondary">Middle</button>
-    <button type="button" class="btn btn-secondary">Right</button>
+<div class="container">
+  <h1 class="d-flex justify-content-center"> My Angular Employee App</h1>
+  <h2 class="d-flex justify-content-center"> Employee Management</h2>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary"> 
+  <a class="navbar-brand  " href="#">Home <span class="sr-only">(current)</span> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto"> 
+      <li class="nav-item">
+        <a routerLink="/department" routerLinkActive="active" class="nav-link" Button
+        label = "DepScreen">Department</a> 
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/employee" routerLinkActive="active" Button
+        label = "EmpScreen">Employee</a>
+      </li>
+      <li class="nav-item dropdown" style="display: none;">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item" style="display: none;">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
-  <div><mat-slider min="1" max="100" step="1" value="1"></mat-slider></div>  
- </div>
+</nav>
 
- <form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Favorite food</mat-label>
-    <input matInput placeholder="Ex. Pizza" value="Sushi">
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Leave a comment</mat-label>
-    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-  </mat-form-field>
-</form> 
-    
+<div> <router-outlet></router-outlet>
+</div>
