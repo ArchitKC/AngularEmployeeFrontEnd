@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialogRef} from '@angular/material/dialog';
+import { DepartmentService } from 'src/app/services/department.service';
 
 @Component({
   selector: 'app-edit-dept',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditDeptComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogbox: MatDialogRef<EditDeptComponent>,
+    public service : DepartmentService
+  ) { }
 
   ngOnInit(): void {
   }
-
+  onClose(){
+    this.dialogbox.close();
+    this.service.filter('Register click');
+  } 
 }

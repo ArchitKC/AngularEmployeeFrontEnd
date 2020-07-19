@@ -1,1 +1,26 @@
-<p>add-dept works!</p>
+<div class="d-flex justify-content-between">
+    <h4>Add new Department</h4>
+    <div class="d-flex justify-content-between">     
+        <div class="example-container">
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate> 
+                <input required minlength="2" type="text"
+                        class="form-control"
+                        name="DepartmentName" 
+                        #DepartmentName="ngModel"
+                        ngModel>
+
+                <div class="text-left text-danger"
+                    *ngIf="DepartmentName.invalid && DepartmentName.touched">
+                    Please enter Department name.
+                </div>  
+                <button mat-button >
+                    <mat-icon>add</mat-icon>
+                </button>        
+            </form>
+            
+            <button mat-button (click)="onClose()">
+                <mat-icon>close</mat-icon>
+            </button>  
+        </div>
+    </div> 
+</div>

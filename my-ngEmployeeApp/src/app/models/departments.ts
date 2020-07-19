@@ -1,5 +1,5 @@
 
-export class DepartmentModel{
+export class Department{
     DepartmentID : number;
     DepartmentName : string;
 }

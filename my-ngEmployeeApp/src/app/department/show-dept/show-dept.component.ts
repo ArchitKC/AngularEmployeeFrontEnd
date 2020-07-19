@@ -5,6 +5,7 @@ import {MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import { DepartmentComponent } from '../department.component';
 import {DepartmentService} from '../../services/department.service';
 import {AddDeptComponent} from '../add-dept/add-dept.component';  
+import {EditDeptComponent} from '../edit-dept/edit-dept.component';
 
 @Component({
   selector: 'app-show-dept',
@@ -15,7 +16,12 @@ export class ShowDeptComponent  implements OnInit {
 
   constructor(
     private service:DepartmentService,
-    private dialog:MatDialog){}
+    private dialog:MatDialog, 
+    ){
+      service.listen().subscribe((m:any)=>{ 
+        this.refreshDepList();
+      });
+    }
 
    
   listData : MatTableDataSource<any>;
@@ -25,14 +31,26 @@ export class ShowDeptComponent  implements OnInit {
 
   ngOnInit() { 
     this.loadDummyData();
+    this.refreshDepList();
   }
 
   onEdit(dep: DepartmentComponent){
-    console.log(dep);
+    if(confirm('Are you sure to Edit the department')){
+      this.service.formData = dep;
+      const dialogAdd = new MatDialogConfig();
+      dialogAdd.disableClose= true;
+      dialogAdd.autoFocus= true;
+      dialogAdd.width = "75%";
+      this.dialog.open(EditDeptComponent,dialogAdd);
+    }
   }
 
-  onDelete(id: number){
-      console.log(id);
+  onDelete(id: number){ 
+    if(confirm('Are you sure to delete')){
+      this.service.deleteDepartment(id).subscribe(res=>{
+        this.refreshDepList();
+      });
+    }
   }
 
   loadDummyData(){ 
@@ -51,8 +69,15 @@ export class ShowDeptComponent  implements OnInit {
     dialogAdd.disableClose= true;
     dialogAdd.autoFocus= true;
     dialogAdd.width = "75%";
-    this.dialog.open(AddDeptComponent,dialogAdd);
-    console.log("Button Clicked");
+    this.dialog.open(AddDeptComponent,dialogAdd); 
+  }
+
+  refreshDepList(){ 
+    this.service.getDepartmentList().subscribe(data => {
+    this.listData  = new MatTableDataSource(data);
+    this.listData.sort = this.sort;
+  });
+    
   }
 
 }
